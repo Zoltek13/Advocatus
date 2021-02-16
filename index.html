@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Advocatus</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <svg style="display: none;">
+            <symbol id="comment" viewBox="0 0 512 512">
+                <g>
+                    <path
+                        d="m460.747 439.163c75.489-87.071 66.225-218.376-18.944-294.583 43.746 153.294-71.93 306.42-231.303 306.42-3.068 0 15.448.108-57.484-.342 39.889 39.703 93.017 61.342 148.48 61.342.144 0 195.446-.999 195.561-1 13.333-.064 19.975-16.29 10.464-25.677z" />
+                    <path
+                        d="m210.5 421c116.064 0 210.489-94.43 210.489-210.5s-94.424-210.5-210.489-210.5-210.488 94.43-210.488 210.5c0 51.099 18.088 99.427 51.237 137.663l-46.774 46.16c-9.48 9.357-2.913 25.612 10.465 25.677.103.001 195.458 1 195.56 1zm-89.495-285h179.99c8.284 0 14.999 6.716 14.999 15s-6.715 15-14.999 15h-179.99c-8.284 0-14.999-6.716-14.999-15s6.716-15 14.999-15zm0 60h179.99c8.284 0 14.999 6.716 14.999 15s-6.715 15-14.999 15h-179.99c-8.284 0-14.999-6.716-14.999-15s6.716-15 14.999-15zm-14.999 75c0-8.284 6.715-15 14.999-15h179.99c8.284 0 14.999 6.716 14.999 15s-6.715 15-14.999 15h-179.99c-8.283 0-14.999-6.716-14.999-15z" />
+                </g>
+            </symbol>
+            <symbol id="share" viewBox="0 -22 512 511">
+                <g>
+                    <path
+                        d="m512 233.820312-212.777344-233.320312v139.203125h-45.238281c-140.273437 0-253.984375 113.710937-253.984375 253.984375v73.769531l20.09375-22.019531c68.316406-74.851562 164.980469-117.5 266.324219-117.5h12.804687v139.203125zm0 0" />
+                </g>
+            </symbol>
+            <symbol id="facebook" viewBox="0 0 24 24">
+                <g>
+                    <path
+                        d="m15.997 3.985h2.191v-3.816c-.378-.052-1.678-.169-3.192-.169-3.159 0-5.323 1.987-5.323 5.639v3.361h-3.486v4.266h3.486v10.734h4.274v-10.733h3.345l.531-4.266h-3.877v-2.939c.001-1.233.333-2.077 2.051-2.077z" />
+                </g>
+            </symbol>
+            <symbol id="twitter" viewBox="0 0 512 512">
+                <g>
+                    <path d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
+                    c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
+                    c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
+                    c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152
+                    c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792
+                    c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
+                    C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
+                    C480.224,136.96,497.728,118.496,512,97.248z" />
+                </g>
+            </symbol>
+            <symbol id="g+" viewBox="0 0 96.669 96.669">
+                <g>
+                    <path
+                        d="M50.91,55.189l-4.533-3.522c-1.38-1.144-3.27-2.656-3.27-5.422c0-2.778,1.889-4.544,3.527-6.18
+                    c5.279-4.157,10.557-8.581,10.557-17.903c0-9.586-6.031-14.629-8.923-17.022h7.795L64.244,0H39.459
+                    C32.658,0,22.856,1.608,15.68,7.533c-5.408,4.666-8.046,11.099-8.046,16.892c0,9.831,7.548,19.798,20.88,19.798
+                    c1.259,0,2.636-0.124,4.022-0.252c-0.623,1.515-1.252,2.777-1.252,4.917c0,3.905,2.006,6.299,3.774,8.567
+                    c-5.663,0.39-16.237,1.018-24.033,5.809c-7.424,4.415-9.684,10.84-9.684,15.377c0,9.334,8.8,18.028,27.045,18.028
+                    c21.636,0,33.089-11.971,33.089-23.823C61.477,64.139,56.447,59.854,50.91,55.189z M34.431,40.691
+                    c-10.824,0-15.727-13.992-15.727-22.434c0-3.288,0.623-6.682,2.763-9.333C23.486,6.4,27,4.762,30.281,4.762
+                    c10.434,0,15.846,14.118,15.846,23.197c0,2.271-0.251,6.296-3.144,9.207C40.96,39.187,37.574,40.691,34.431,40.691z
+                     M34.555,91.387c-13.46,0-22.139-6.438-22.139-15.392c0-8.949,8.048-11.978,10.816-12.979c5.281-1.777,12.076-2.024,13.21-2.024
+                    c1.258,0,1.887,0,2.889,0.126c9.568,6.81,13.721,10.203,13.721,16.65C53.053,85.573,46.635,91.387,34.555,91.387z" />
+                    <polygon points="82.679,40.499 82.679,27.894 76.455,27.894 76.455,40.499 63.869,40.499 63.869,46.793 76.455,46.793
+                    76.455,59.477 82.679,59.477 82.679,46.793 95.328,46.793 95.328,40.499" />
+                </g>
+            </symbol>
+            <symbol id="instagram" viewBox="0 0 24 24">
+                <g>
+                    <path
+                        d="m12.004 5.838c-3.403 0-6.158 2.758-6.158 6.158 0 3.403 2.758 6.158 6.158 6.158 3.403 0 6.158-2.758 6.158-6.158 0-3.403-2.758-6.158-6.158-6.158zm0 10.155c-2.209 0-3.997-1.789-3.997-3.997s1.789-3.997 3.997-3.997 3.997 1.789 3.997 3.997c.001 2.208-1.788 3.997-3.997 3.997z" />
+                    <path
+                        d="m16.948.076c-2.208-.103-7.677-.098-9.887 0-1.942.091-3.655.56-5.036 1.941-2.308 2.308-2.013 5.418-2.013 9.979 0 4.668-.26 7.706 2.013 9.979 2.317 2.316 5.472 2.013 9.979 2.013 4.624 0 6.22.003 7.855-.63 2.223-.863 3.901-2.85 4.065-6.419.104-2.209.098-7.677 0-9.887-.198-4.213-2.459-6.768-6.976-6.976zm3.495 20.372c-1.513 1.513-3.612 1.378-8.468 1.378-5 0-7.005.074-8.468-1.393-1.685-1.677-1.38-4.37-1.38-8.453 0-5.525-.567-9.504 4.978-9.788 1.274-.045 1.649-.06 4.856-.06l.045.03c5.329 0 9.51-.558 9.761 4.986.057 1.265.07 1.645.07 4.847-.001 4.942.093 6.959-1.394 8.453z" />
+                    <circle cx="18.406" cy="5.595" r="1.439" />
+                </g>
+            </symbol>
+        </svg>
+
+        <header class="header">
+            <div class="container">
+                <div class="header__body">
+                    <a href="#intro" class="header__logo">Advocatus<span>.</span></a>
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="header__list">
+                            <li>
+                                <a href="#about" class="header__link">About us</a>
+                            </li>
+                            <li>
+                                <a href="#practise" class="header__link">Practice Area</a>
+                            </li>
+                            <li>
+                                <a href="#meet" class="header__link">Lawyers</a>
+                            </li>
+                            <li>
+                                <a href="#recent" class="header__link">Publications</a>
+                            </li>
+                            <li>
+                                <a href="#questions" class="header__link">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="#contact" class="header__link">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <div class="intro" id="intro">
+            <div class="container2">
+                <div class="intro__body">
+                    <div class="intro__info">
+                        <div class="intro__name">Adam Suaerez</div>
+                        <div class="intro__prof">Lawyer</div>
+                    </div>
+
+                    <a href="" class="intro__btn">Contact Me</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about__bg">
+                    <div class="about__header section-header">
+                        <h2 class="section-header__title">About us</h2>
+                        <div class="section-header__text">
+                            We are regarded as industry leaders in stunning
+                            website solutions, focused on delivering
+                            unsurpassed user experiences.
+                        </div>
+                        <div class="section-header__number">01</div>
+                    </div>
+                    <div class="about__info">
+                        <div class="about__row">
+                            <div class="about__row_title">History</div>
+                            <div class="about__row_info">
+                                <div class="about__row_date">
+                                    2016<span>-</span>
+                                </div>
+                                <div class="about__row_text">
+                                    In hac habitasse platea dictumst Nunc
+                                    ultricies iaculis luctus Aliquam eget
+                                    eros eget sapien dictum.
+                                </div>
+                            </div>
+                            <div class="about__row_info">
+                                <div class="about__row_date">
+                                    2015<span>-</span>
+                                </div>
+                                <div class="about__row_text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor.
+                                </div>
+                            </div>
+                            <div class="about__row_info">
+                                <div class="about__row_date">
+                                    2014<span>-</span>
+                                </div>
+                                <div class="about__row_text">
+                                    In hac habitasse platea dictumst Nunc
+                                    ultricies iaculis luctus Aliquam eget
+                                    eros eget sapien.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about__row">
+                            <div class="about__row_title">Expertise</div>
+                            <div class="about__row_text_r">
+                                Lorem ipsum dolor sit amet, consetetur
+                                sadipscing elitr, sed diam nonumy eirmod
+                                tempor invidunt ut labore et dolore magna
+                                aliquyam erat, sed diam voluptua. At vero
+                                eos et accusam et justo duo dolores et ea
+                                rebum. Stet clita kasd gubergren, no sea
+                                takimata sanctus est Lorem.Lorem ipsum dolor
+                                sit amet, consetetur sadipscing elitr, sed
+                                diam nonumy eirmod tempor invidunt.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="practise" id="practise">
+            <div class="container">
+                <div class="practise__bg">
+                    <div class="section-header section-header_pr">
+                        <h2 class="section-header__title section-header__title_pr">
+                            Practis Area
+                        </h2>
+                        <div class="section-header__text section-header__text_pr">
+                            We are regarded as industry leaders in stunning
+                            website solutions, focused on delivering
+                            unsurpassed user experiences.
+                        </div>
+                        <div class="section-header__number section-header__number_pr">
+                            02
+                        </div>
+                    </div>
+
+                    <div class="practise__row">
+                        <div class="practise__item item-practise">
+                            <div class="item-practise__icon">
+                                <img src="img/png/practise1.png" alt="" />
+                            </div>
+                            <div class="item-practise__info">
+                                <div class="item-practise__title">
+                                    Private Client Service
+                                </div>
+                                <div class="item-practise__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practise__item item-practise">
+                            <div class="item-practise__icon">
+                                <img src="img/png/practise2.png" alt="" />
+                            </div>
+                            <div class="item-practise__info">
+                                <div class="item-practise__title">
+                                    LABOUR AND EMPLOYMENT
+                                </div>
+                                <div class="item-practise__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="practise__row">
+                        <div class="practise__item item-practise">
+                            <div class="item-practise__icon">
+                                <img src="img/png/practise3.png" alt="" />
+                            </div>
+                            <div class="item-practise__info">
+                                <div class="item-practise__title">
+                                    Cyber Sequre
+                                </div>
+                                <div class="item-practise__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practise__item item-practise">
+                            <div class="item-practise__icon">
+                                <img src="img/png/practise4.png" alt="" />
+                            </div>
+                            <div class="item-practise__info">
+                                <div class="item-practise__title">
+                                    Real Estate
+                                </div>
+                                <div class="item-practise__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="meet" id="meet">
+            <div class="container">
+                <div class="meet__bg">
+                    <div class="section-header section-header_meet">
+                        <h2 class="section-header__title section-header__title_meet">
+                            Meet Our Attorney
+                        </h2>
+                        <div class="section-header__text section-header__text_meet">
+                            We are regarded as industry leaders in stunning
+                            website solutions, focused on delivering
+                            unsurpassed user experiences.
+                        </div>
+                        <div class="section-header__number section-header__number_meet">
+                            03
+                        </div>
+                    </div>
+
+                    <div class="meet__body">
+                        <div class="meet__item">
+                            <div class="meet__photo">
+                                <a href="#"><img src="img/jpg/meet1.jpg" alt="" /></a>
+                            </div>
+                            <div class="meet__name">
+                                <a href="#">Adam Suarez</a>
+                            </div>
+                            <div class="meet__prof">
+                                <a href="#">Attorney General</a>
+                            </div>
+                        </div>
+                        <div class="meet__item">
+                            <div class="meet__photo">
+                                <a href="#"><img src="img/jpg/meet2.jpg" alt="" /></a>
+                            </div>
+                            <div class="meet__name">
+                                <a href="#">Lina Suarez</a>
+                            </div>
+                            <div class="meet__prof">
+                                <a href="#">Attorney General</a>
+                            </div>
+                        </div>
+                        <div class="meet__item">
+                            <div class="meet__photo">
+                                <a href="#"><img src="img/jpg/meet3.jpg" alt="" /></a>
+                            </div>
+                            <div class="meet__name">
+                                <a href="#">Jems Snow</a>
+                            </div>
+                            <div class="meet__prof">
+                                <a href="#">Attorney General</a>
+                            </div>
+                        </div>
+                        <div class="meet__item">
+                            <div class="meet__photo">
+                                <a href="#"><img src="img/jpg/meet4.jpg" alt="" /></a>
+                            </div>
+                            <div class="meet__name">
+                                <a href="#">Jems Snow</a>
+                            </div>
+                            <div class="meet__prof">
+                                <a href="#">Attorney General</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="clients" id="clients">
+            <div class="container">
+                <div class="clients__bg">
+                    <div class="section-header section-header_cl">
+                        <h2 class="section-header__title section-header__title_cl">
+                            Our Clients Say
+                        </h2>
+                        <div class="section-header__text section-header__text_cl">
+                            We are regarded as industry leaders in stunning
+                            website solutions, focused on delivering
+                            unsurpassed user experiences.
+                        </div>
+                        <div class="section-header__number section-header__number_cl">
+                            04
+                        </div>
+                    </div>
+
+                    <div class="clients__body">
+                        <div class="clients__item">
+                            <div class="clients__photo">
+                                <img src="img/jpg/clients_item.jpg" alt="" />
+                            </div>
+                            <div class="clients__info">
+                                <div class="clients__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam et justo duo
+                                    dolores et ea rebum. Stet clita kasd
+                                    gubergren, no sea takimata sanctus est
+                                    Lorem.Lorem ipsum dolor sit amet,
+                                    consetetur sadipscing elitr, sed diam
+                                    nonumy eirmod tempor invidunt.
+                                </div>
+                                <div class="clients__name">Alon Smith</div>
+                                <div class="clients__prof">
+                                    CEO of AVC Group
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clients__item">
+                            <div class="clients__photo">
+                                <img src="img/jpg/clients_item.jpg" alt="" />
+                            </div>
+                            <div class="clients__info">
+                                <div class="clients__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam et justo duo
+                                    dolores et ea rebum. Stet clita kasd
+                                    gubergren, no sea takimata sanctus est
+                                    Lorem.Lorem ipsum dolor sit amet,
+                                    consetetur sadipscing elitr, sed diam
+                                    nonumy eirmod tempor invidunt.
+                                </div>
+                                <div class="clients__name">Alon Smith</div>
+                                <div class="clients__prof">
+                                    CEO of AVC Group
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clients__item">
+                            <div class="clients__photo">
+                                <img src="img/jpg/clients_item.jpg" alt="" />
+                            </div>
+                            <div class="clients__info">
+                                <div class="clients__text">
+                                    Lorem ipsum dolor sit amet, consetetur
+                                    sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore
+                                    magna aliquyam erat, sed diam voluptua.
+                                    At vero eos et accusam et justo duo
+                                    dolores et ea rebum. Stet clita kasd
+                                    gubergren, no sea takimata sanctus est
+                                    Lorem.Lorem ipsum dolor sit amet,
+                                    consetetur sadipscing elitr, sed diam
+                                    nonumy eirmod tempor invidunt.
+                                </div>
+                                <div class="clients__name">Alon Smith</div>
+                                <div class="clients__prof">
+                                    CEO of AVC Group
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent" id="recent">
+            <div class="container">
+                <div class="section-header section-header_rc">
+                    <h2 class="section-header__title section-header__title_rc">
+                        Recent Publications
+                    </h2>
+                    <div class="section-header__text section-header__text_rc">
+                        We are regarded as industry leaders in stunning
+                        website solutions, focused on delivering unsurpassed
+                        user experiences.
+                    </div>
+                    <div class="section-header__number section-header__number_rc">
+                        05
+                    </div>
+                </div>
+
+                <div class="recent__body">
+                    <div class="recent__item item">
+                        <div class="item__photo">
+                            <img src="img/jpg/recent1.jpg" alt="" />
+                        </div>
+
+                        <div class="item__title">Recent Publications</div>
+                        <div class="item__info">
+                            <div class="item__name">
+                                <span>By</span> Adam Suarez
+                            </div>
+                            <div class="item__date">12 Nov, 2015</div>
+                        </div>
+                        <div class="item__text">
+                            Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam
+                            erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum.
+                        </div>
+                        <div class="item__footer">
+                            <a href="#">
+                                <div class="item__comment">29 Comments</div>
+                                <svg class="icon">
+                                    <use xlink:href="#comment"></use>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg class="item__share item__share_icon">
+                                    <use xlink:href="#share"></use>
+                                </svg>
+                                <div class="item__share">Share</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="recent__item item">
+                        <div class="item__photo">
+                            <img src="img/jpg/recent2.jpg" alt="" />
+                        </div>
+                        <div class="item__title">Recent Publications</div>
+                        <div class="item__info">
+                            <div class="item__name">
+                                <span>By</span> Adam Suarez
+                            </div>
+                            <div class="item__date">12 Nov, 2015</div>
+                        </div>
+                        <div class="item__text">
+                            Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam
+                            erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum.
+                        </div>
+                        <div class="item__footer">
+                            <a href="#">
+                                <div class="item__comment">29 Comments</div>
+                                <svg class="icon">
+                                    <use xlink:href="#comment"></use>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg class="item__share item__share_icon">
+                                    <use xlink:href="#share"></use>
+                                </svg>
+                                <div class="item__share">Share</div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="recent__item item">
+                        <div class="item__photo">
+                            <img src="img/jpg/recent3.jpg" alt="" />
+                        </div>
+                        <div class="item__title">Recent Publications</div>
+                        <div class="item__info">
+                            <div class="item__name">
+                                <span>By</span> Adam Suarez
+                            </div>
+                            <div class="item__date">12 Nov, 2015</div>
+                        </div>
+                        <div class="item__text">
+                            Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam
+                            erat, sed diam voluptua. At vero eos et accusam
+                            et justo duo dolores et ea rebum.
+                        </div>
+                        <div class="item__footer">
+                            <a href="#">
+                                <div class="item__comment">29 Comments</div>
+                                <svg class="icon">
+                                    <use xlink:href="#comment"></use>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg class="item__share item__share_icon">
+                                    <use xlink:href="#share"></use>
+                                </svg>
+                                <div class="item__share">Share</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="questions" id="questions">
+            <div class="container">
+                <div class="section-header section-header_qs">
+                    <h2 class="section-header__title section-header__title_qs">
+                        Frequently asked questions
+                    </h2>
+                    <div class="section-header__text section-header__text_qs">
+                        We are regarded as industry leaders in stunning
+                        website solutions, focused on delivering unsurpassed
+                        user experiences.
+                    </div>
+                    <div class="section-header__number section-header__number_qs">
+                        05
+                    </div>
+                </div>
+
+                <div class="questions__row">
+                    <div class="questions__item item-questions">
+                        <div class="item-questions__link active _tabs-item">
+                            <div class="item-questions__text">
+                                What paperwork do I need to complete to file
+                                for divorce?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-questions__link _tabs-item">
+                            <div class="item-questions__text">
+                                How do I change my custody and suport
+                                orders?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-questions__link _tabs-item">
+                            <div class="item-questions__text">
+                                How to make a General Diary?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-questions__link _tabs-item">
+                            <div class="item-questions__text">
+                                What paperwork do I need to complete to file
+                                for divorce?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-questions__link _tabs-item">
+                            <div class="item-questions__text">
+                                How do I protect a business name?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="item-questions__link _tabs-item">
+                            <div class="item-questions__text">
+                                Should I incorporate my business?
+                            </div>
+                            <div class="item-questions__plus">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-questions item-questions_r">
+                        <div class="item-questions__banner">
+                            <div class="item-questions__banner_text active _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. The point of
+                                using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters,
+                                as opposed to using 'Content here, content
+                                here', making it look like readable English.
+                            </div>
+                            <div class="item-questions__banner_text _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. Content here, content
+                                here', making it look like readable English.
+                            </div>
+                            <div class="item-questions__banner_text _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. Content here, content
+                                here', making it look like readable English. Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. The point of
+                                using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters,
+                                as opposed to using 'Content here, content
+                                here', making it look like readable English. Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. Content here, content
+                                here', making it look like readable English. Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. The point of
+                                using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters,
+                                as opposed to using 'Content here, content
+                                here', making it look like readable English.
+                            </div>
+                            <div class="item-questions__banner_text _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. Content here, content
+                                here', making it look like readable English. Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. The point of
+                                using Lorem Ipsum is that it has a
+                                more-or-less normal distribution of letters,
+                                as opposed to using 'Content here, content
+                                here', making it look like readable English.
+                            </div>
+                            <div class="item-questions__banner_text _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout. Content here, content
+                                here', making it look like readable English. Making it look like readable English.
+                            </div>
+                            <div class="item-questions__banner_text _tabs-block">
+                                Long established fact that a reader will be
+                                distracted by the readable content of a page
+                                when looking at its layout.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header section-header_con">
+                    <h2 class="section-header__title section-header__title_con">
+                        Feel Free to Contact
+                    </h2>
+                    <div class="section-header__text section-header__text_con">
+                        We are regarded as industry leaders in stunning
+                        website solutions, focused on delivering unsurpassed
+                        user experiences.
+                    </div>
+                    <div class="section-header__number section-header__number_con">
+                        07
+                    </div>
+                </div>
+
+                <div class="contact__body body-contact">
+                    <div class="body-contact__item">
+                        <div class="body-contact__link">
+                            <input type="text" placeholder="Enter your name..." />
+                        </div>
+                        <div class="body-contact__link">
+                            <input type="text" placeholder="Enter your mail..." />
+                        </div>
+                        <div class="body-contact__link">
+                            <input type="text" placeholder="Enter your phone..." />
+                        </div>
+                        <div class="body-contact__link">
+                            <textarea name="message" placeholder="Enter your message..."></textarea>
+                        </div>
+                        <a href="#" class="body-contact__btn">Send Message</a>
+                    </div>
+
+                    <div class="body-contact__item body-contact__item_r">
+                        <div class="body-contact__map">
+                            <img src="img/jpg/map.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer" id="footer">
+            <div class="container">
+                <div class="footer__body">
+                    <div class="footer__copyright">
+                        <span>Copyright ©</span> Symu.co
+                    </div>
+                    <div class="footer__social">
+                        <a href="#" class="footer__link">
+                            <svg class="footer__icon">
+                                <use xlink:href="#facebook"></use>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__link">
+                            <svg class="footer__icon">
+                                <use xlink:href="#twitter"></use>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__link">
+                            <svg class="footer__icon">
+                                <use xlink:href="#g+"></use>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer__link">
+                            <svg class="footer__icon">
+                                <use xlink:href="#instagram"></use>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/jquery.malihu.PageScroll2id.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
